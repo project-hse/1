@@ -2,10 +2,13 @@ class Node:
 	# each node initially has itslef as parent and rank 0
 	def __init__(self, name, latitude, longitude):
 		self.name = name
-		self.parent = Node(name, latitude, longitude)
 		self.rank = 0
 		self.lat = latitude
 		self.long = longitude
+
+	def __str__(self):
+		s = self.name + ' ' + str(self.long) + ' ' + str(self.lat)
+		return s
 
 
 class Graph:
@@ -13,21 +16,19 @@ class Graph:
 	def __init__(self):
 		self.graph = []
 		self.nodes = []
-
-	# add edge between "v" & "u" with weight "weight"
-	def addEdge(self, v, u, weight):
-		self.graph.append([v, u, weight])
+		self.parent = dict()
 
 	# add node
 	def addNode(self, name, latitude, longitude):
 		node = Node(name, latitude, longitude)
 		self.nodes.append(node)
+		self.parent[node] = node
 
 	# find root of tree vertex belongs to
 	def find(self, u):
-		if u.parent == u:
+		if self.parent[u] == u:
 			return u
-		return self.find(u.parent)
+		return self.find(self.parent[u])
 
 
 	# connect "u" & "v" in MST
@@ -36,9 +37,9 @@ class Graph:
 		rootu = self.find(u)
 
 		if rootu.rank > rootv.rank:
-			rootv.parent = rootu
+			self.parent[rootv] = rootu
 		else:
-			rootu.parent = rootv
+			self.parent[rootu] = rootv
 			if rootu.rank == rootv.rank:
 				rootv.rank += 1
 
@@ -58,7 +59,7 @@ def makeGraph(inputf):
 	for i in range(len(g.nodes) - 1): #from array of nodes calculate weights, add edges to graph g
 		for j in range(i + 1, len(g.nodes)):
 			weight = ((g.nodes[i].lat - g.nodes[j].lat)**2 + (g.nodes[i].long - g.nodes[j].long)**2)**0.5
-			g.addEdge(g.nodes[i], g.nodes[j], weight)
+			g.graph.append([g.nodes[i], g.nodes[j], weight])
 	
 	return g
 
@@ -68,6 +69,7 @@ def Kruskal(g):
 
 	for i in range(len(g.graph)): #for all edges
 		u, v, weight = g.graph[i]
+		
 		if g.find(u) != g.find(v): #test for cycles
 			g.connect(u, v)
 			MST.append([u, v, weight])
@@ -83,5 +85,5 @@ ans = Kruskal(g)
 # some output shit
 
 # test output
-for i in range(len(ans)):
-	print(ans[i][0], ans[i][1], ans[i][2])
+# for i in range(len(ans)):
+# 	print(ans[i][0], ans[i][1], ans[i][2])
