@@ -64,7 +64,7 @@ def makeGraph(inputf):
 	return g
 
 def Kruskal(g):
-	MST = []
+	MST = set()
 	g.graph = sorted(g.graph, key=lambda item: item[2])
 
 	for i in range(len(g.graph)): #for all edges
@@ -72,35 +72,34 @@ def Kruskal(g):
 		
 		if g.find(u) != g.find(v): #test for cycles
 			g.connect(u, v)
-			MST.append([u, v, weight])
+			MST.add((u.name, v.name, weight))
 		#else not included
 
 	return MST
 
 def Prim(g):
-    #Create lists MST and X
-    MST = []
-    X = []
+	#Create lists MST and X
+	MST = set()
+	X = []
 
-    X.append(g.nodes[0]) # Start from the arbitrary node
-    while len(X) != len(g.nodes): #For  each node 'x' in a graph
-        curr_edges = []                #we add edge from 'x' to 'i' to curr_edges
-        for x in X:               #if 'i' is not yet in X
-            for i in g.nodes:
-                weight = ((i.lat - x.lat)**2 + (i.long - x.long)**2)**0.5
-                if i not in X and weight != 0:
-                    curr_edges.append([i, x, weight])
-        #Then find the edge with the smallest weight in a curr_edges, add it to MST
-        curr_edges = sorted(curr_edges, key = lambda item: item[2])
-        edge = curr_edges[0]
-        print (edge)
+	X.append(g.nodes[0]) # Start from the arbitrary node
+	while len(X) != len(g.nodes): #For  each node 'x' in a graph
+		curr_edges = []                #we add edge from 'x' to 'i' to curr_edges
+		for x in X:               #if 'i' is not yet in X
+			for i in g.nodes:
+				if i not in X:
+					weight = ((i.lat - x.lat)**2 + (i.long - x.long)**2)**0.5
+					curr_edges.append([i, x, weight])
+		#Then find the edge with the smallest weight in a curr_edges, add it to MST
+		curr_edges = sorted(curr_edges, key = lambda item: item[2])
+		edge = curr_edges[0]
 
-        MST.append([edge])
-        X.append(edge[0]) #Add new node to X, repeat
-    return MST
+		MST.add((edge[1].name, edge[0].name, edge[2]))
+		X.append(edge[0]) #Add new node to X, repeat
+	return MST
 
 def Boruvka(g):
-	MST = [] #resulting graph
+	MST = set() #resulting graph
 	minEdge = dict() #array of minimal edges for each CC
 	n = len(g.nodes) #number of CCs, initially = num of nodes (each node is a CC)
 
@@ -115,9 +114,9 @@ def Boruvka(g):
 
 			if CC1 != CC2: #if v, u not in the same CC
 				#if current edge is smaller than edge of CC in minEdge
-				if not (CC1 in minEdge) or minEdge[CC1][2] > weight:
+				if CC1 not in minEdge or minEdge[CC1][2] > weight:
 						minEdge[CC1] = [u, v, weight]
-				if not (CC2 in minEdge) or minEdge[CC2][2] > weight:
+				if CC2 not in minEdge or minEdge[CC2][2] > weight:
 						minEdge[CC2] = [u, v, weight]
 		#now we have minimal edges for all current CC
 
@@ -132,7 +131,7 @@ def Boruvka(g):
 
 				if CC1 != CC2: #we could have connected them already if the edge was min for both
 					g.connect(CC1, CC2) #unite CCs current edge connects
-					MST.append([u, v, weight])
+					MST.add((u.name, v.name, weight))
 
 		#clear dicitonary of minimal edges before next iteration
 		minEdge.clear()
@@ -141,10 +140,10 @@ def Boruvka(g):
 
 
 g = makeGraph("input.txt")
-# ans = Kruskal(g)
+# ans = Boruvka(g)
 
 # some output shit
 
 # test output
-# for i in range(len(ans)):
-# 	print(ans[i][0], ans[i][1], ans[i][2])
+# for i in ans:
+# 	print(i)
