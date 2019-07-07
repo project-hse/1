@@ -77,6 +77,28 @@ def Kruskal(g):
 
 	return MST
 
+def Prim(g):
+    #Create lists MST and X
+    MST = []
+    X = []
+
+    X.append(g.nodes[0]) # Start from the arbitrary node
+    while len(X) != len(g.nodes): #For  each node 'x' in a graph
+        curr_edges = []                #we add edge from 'x' to 'i' to curr_edges
+        for x in X:               #if 'i' is not yet in X
+            for i in g.nodes:
+                weight = ((i.lat - x.lat)**2 + (i.long - x.long)**2)**0.5
+                if i not in X and weight != 0:
+                    curr_edges.append([i, x, weight])
+        #Then find the edge with the smallest weight in a curr_edges, add it to MST
+        curr_edges = sorted(curr_edges, key = lambda item: item[2])
+        edge = curr_edges[0]
+        print (edge)
+
+        MST.append([edge])
+        X.append(edge[0]) #Add new node to X, repeat
+    return MST
+
 
 
 g = makeGraph("input.txt")
