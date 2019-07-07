@@ -99,10 +99,49 @@ def Prim(g):
         X.append(edge[0]) #Add new node to X, repeat
     return MST
 
+def Boruvka(g):
+	MST = [] #resulting graph
+	minEdge = dict() #array of minimal edges for each CC
+	n = len(g.nodes) #number of CCs, initially = num of nodes (each node is a CC)
+
+	g.graph = sorted(g.graph, key=lambda item: item[2])
+
+	while len(MST) < n - 1: #while we don't have n-1 edges in MST = while we don't have 1 resulting tree that is MST
+		# find minimal edges for all current CCs
+		for i in range (len(g.graph)):
+			u, v, weight = g.graph[i]
+			CC1 = g.find(u) #root of CC of u
+			CC2 = g.find(v) #root of CC of v
+
+			if CC1 != CC2: #if v, u not in the same CC
+				#if current edge is smaller than edge of CC in minEdge
+				if not (CC1 in minEdge) or minEdge[CC1][2] > weight:
+						minEdge[CC1] = [u, v, weight]
+				if not (CC2 in minEdge) or minEdge[CC2][2] > weight:
+						minEdge[CC2] = [u, v, weight]
+		#now we have minimal edges for all current CC
+
+		#add found edges to MST
+		for i in range (len(g.nodes)):
+			node = g.nodes[i]
+
+			if node in minEdge: #a node can be not in minEdge if it isn't a root of some CC
+				u, v, weight = minEdge[node]
+				CC1 = g.find(u) #root of CC of u
+				CC2 = g.find(v) #root of CC of v
+
+				if CC1 != CC2: #we could have connected them already if the edge was min for both
+					g.connect(CC1, CC2) #unite CCs current edge connects
+					MST.append([u, v, weight])
+
+		#clear dicitonary of minimal edges before next iteration
+		minEdge.clear()
+
+	return MST
 
 
 g = makeGraph("input.txt")
-ans = Kruskal(g)
+# ans = Kruskal(g)
 
 # some output shit
 
