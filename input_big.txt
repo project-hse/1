@@ -1,6 +1,5 @@
 	accuracy	formatted_address	google_place_id	input_string	latitude	longitude	number_of_results	postcode	status	type
 0	APPROXIMATE	"Canberra ACT 2601, Australia"	ChIJIZBcsGlNFmsRYFZpp27qAAU	Canberra Australia	-35.2809368	149.1300092	1	2601	OK	"locality,political"
-1	APPROXIMATE	"Albury–Wodonga, Australia"	ChIJifxkuVpYIWsRsc226qXy8bU	Albury-Wodonga Australia	-36.1583417	146.8985944	1		OK	"colloquial_area,political"
 2	APPROXIMATE	"Armidale NSW 2350, Australia"	ChIJfVxG3dufn2sRwClEkLQJBgU	Armidale Australia	-30.5015616	151.6661993	1	2350	OK	"locality,political"
 3	APPROXIMATE	"Ballina NSW 2478, Australia"	ChIJ1QP0rGCAkGsRwCtEkLQJBgU	Ballina Australia	-28.8379654	153.5629067	1	2478	OK	"locality,political"
 4	APPROXIMATE	"Balranald NSW 2715, Australia"	ChIJDfeYaVR63WoRUAJEkLQJBgQ	Balranald Australia	-34.6367064	143.5615815	1	2715	OK	"locality,political"
@@ -110,7 +109,6 @@
 108	APPROXIMATE	"Mackay QLD 4740, Australia"	ChIJB1bTovfT22sRAAQhf_HuAAU	Mackay Australia	-21.1424956	149.1821469	1	4740	OK	"locality,political"
 109	APPROXIMATE	"Mareeba QLD 4880, Australia"	ChIJq1X9Az58eGkRcHEgf_HuAAQ	Mareeba Australia	-17.0019368	145.4388546	1	4880	OK	"locality,political"
 110	APPROXIMATE	"Maroochydore QLD 4558, Australia"	ChIJLTsL4bB3k2sRoKve81qjAgU	Maroochydore Australia	-26.65	153.1	1	4558	OK	"locality,political"
-111	APPROXIMATE	"Maryborough QLD 4650, Australia"	ChIJpU8cWR1n62sRsBEhf_HuAAU	Maryborough Australia	-25.5232627	152.6970636	1	4650	OK	"colloquial_area,locality,political"
 112	APPROXIMATE	"Moonie QLD 4406, Australia"	ChIJwWXG4_blvGsRwKcgf_HuAAQ	Moonie Australia	-27.7169588	150.3700296	1	4406	OK	"locality,political"
 113	APPROXIMATE	"Moranbah QLD 4744, Australia"	ChIJvx1dDRDDz2sRwIIgf_HuAAQ	Moranbah Australia	-22.002777	148.057916	1	4744	OK	"locality,political"
 114	APPROXIMATE	"Mount Isa QLD 4825, Australia"	ChIJ4TxKeftSFmoRt3uLYmWNKOU	Mount Isa Australia	-20.7255748	139.4927085	1	4825	OK	"locality,political"
@@ -157,7 +155,6 @@
 155	APPROXIMATE	"Launceston TAS 7250, Australia"	ChIJXf2ELuGmcKoRkBne0E3JAwU	Launceston Australia	-41.4332215	147.1440875	1	7250	OK	"locality,political"
 156	APPROXIMATE	"New Norfolk TAS 7140, Australia"	ChIJI6hJFnxrbqoRMBLe0E3JAwU	New Norfolk Australia	-42.7828332	147.0593848	1	7140	OK	"locality,political"
 157	APPROXIMATE	"Queenstown TAS 7467, Australia"	ChIJG4rjnuo2ZaoRcALe0E3JAwQ	Queenstown Australia	-42.0811804	145.5540562	1	7467	OK	"locality,political"
-158	APPROXIMATE	"Richmond VIC 3121, Australia"	ChIJRbmNAVlC1moREOiMIXVWBAU	Richmond Australia	-37.823	144.998	1	3121	OK	"locality,political"
 159	APPROXIMATE	"Rosebery NSW 2018, Australia"	ChIJT83LdLyxEmsRAMkyFmh9AQU	Rosebery Australia	-33.92369	151.20528	1	2018	OK	"locality,political"
 160	APPROXIMATE	"Smithton TAS 7330, Australia"	ChIJh96g1MI_fKoRsPTd0E3JAwQ	Smithton Australia	-40.8578071	145.1206002	1	7330	OK	"locality,political"
 161	APPROXIMATE	"Stanley TAS 7331, Australia"	ChIJBbG0oaIXfKoRcPXd0E3JAwQ	Stanley Australia	-40.766667	145.3	1	7331	OK	"locality,political"
