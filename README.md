@@ -38,6 +38,7 @@ First, a graph g is made from given data, then all three algorithms are runned o
 We imported folium library to create a map. From the Kruskal algorithm, we had a set of all edges in MST. This set consists of tuples, in each tuple there are three objects: start node, finish node, weight. Firstly, we construct markers with coordinates of the cities, using built-in methods of folio library. Secondly, we connect those markers. Coordinates of markers are taken from the properties of the nodes.
 
 **Geocoding.py**
+## Drive part: 
 In geocoding part we used 4 libraries: logging, time, pandas, requests and our Google API key. With God’s help, we have coped with the task. After mentioning all restrictions and extra functions(as Google Full Result). Using Google’s geocode url we got all information about cities in Australia. Also there are some helpful time managing features if we get API Query limit. In distance matrix part we used prepared MST and tried to understand if real roads are shorter.
 
 # Result: 
