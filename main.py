@@ -1,5 +1,6 @@
 import pandas as pd
 import csv
+import folium
 class Node:
 	# each node initially has itslef as parent and rank 0
 	def __init__(self, name, latitude, longitude):
@@ -154,8 +155,10 @@ for i in g.nodes:
 	g.parent[i] = i
 
 ansK = Kruskal(g)
-data = ansK
-with open('Output1.csv', 'w') as out:
+data = set()
+for i in ansK:
+    data.add((i[0].name, i[1].name, i[2]))
+with open('/Users/fmtsvetkov/Desktop/Output1.csv', 'w') as out:
     csv_out = csv.writer(out)
     csv_out.writerow(['City 1', 'City 2', 'Graph'])
     for row in data:
@@ -164,8 +167,6 @@ with open('Output1.csv', 'w') as out:
 # check
 if equal(ansP, ansK) and (ansK >= ansB and ansK <= ansB) and equal(ansB, ansP):
 	print('found MST')
-	
-import folium
 
 coord = [-35, 149]
 coord.reverse
