@@ -48,13 +48,17 @@ class Graph:
 def makeGraph(inputf):
 	g = Graph()
 
-	fin = open(inputf, 'r')
-	line = fin.readline()
-	while line: #add nodes to graph g w their coords from file
-		s = line.split()
-		g.addNode(s[0], float(s[1]), float(s[2]))
-		line = fin.readline()
-	fin.close()
+	    for index, row in df.iterrows():
+        #print(row['input_string'], row['latitude'], row['longitude'])
+        g.addNode(row['input_string'], row['latitude'], row['longitude'])
+
+    #fin = open(inputf, 'r')
+    #line = fin.readline()
+    #while line:  # add nodes to graph g w their coords from file
+        #s = line.split()
+        #g.addNode(s[0], float(s[1]), float(s[2]))
+        #line = fin.readline()
+    #fin.close()
 
 	for i in range(len(g.nodes) - 1): #from array of nodes calculate weights, add edges to graph g
 		for j in range(i + 1, len(g.nodes)):
@@ -139,7 +143,10 @@ def Boruvka(g):
 	return MST
 
 
-g = makeGraph("input.txt")
+df = pd.read_csv("Output.csv", usecols = ["input_string", "latitude", "longitude"])
+g = makeGraph(df)
+ans = Kruskal(g)
+
 
 ansP = Prim(g)
 ansB = Boruvka(g)
