@@ -143,11 +143,23 @@ def Boruvka(g):
 
 	return MST
 
+def equal(set1, set2):
+	ans = True
+	for i in set1:
+		rev = (i[1], i[0], i[2])
+		if not (i in set2 or rev in set2):
+			ans = False
+			break
+	for i in set2:
+		rev = (i[1], i[0], i[2])
+		if not (i in set1 or rev in set1):
+			ans = False
+			break
+	return ans
+
 
 df = pd.read_csv("Output.csv", usecols = ["input_string", "latitude", "longitude"])
 g = makeGraph(df)
-ans = Kruskal(g)
-
 
 ansP = Prim(g)
 ansB = Boruvka(g)
@@ -158,7 +170,8 @@ for i in g.nodes:
 ansK = Kruskal(g)
 
 # chek
-# ans = ansP.difference(ansK)
+if equal(ansP, ansK) and (ansK >= ansB and ansK <= ansB) and equal(ansB, ansP):
+	print('found MST')
 
 # some output shit
 
