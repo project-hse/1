@@ -18,6 +18,8 @@ a node is implemented as an object of class Node with attributes ‘name’ (str
 a graph is implemented as an object of class Graph with attributed ‘graph’ (array of edges), ‘nodes’ (array of nodes) and ‘parent’ (dictionary with nodes as keys and the root of the tree a node currently belongs to as value for any key). Methods are addNode(name, latitude, longitude), find(node) (finds the root of the tree the node belongs to), connect(u, v) (connect the connected components the nodes belong to)
 ### Function makeGraph(file.csv):
 makes an object of type Graph from the given .csv file of nodes
+### Function equal(set, set):
+compares two sets of edges. Needed because default sets comparison does not count edges (a, b, weight) and (b, a, weight) as equal, which they are, as the graph we work with is undirected. Through two cycles it checks that all the edges from set 1 are in set 2 and edges from set 2 are in set 1, so that they are equal.
 
 ## Algorithms:
 ### Kruskal:
@@ -26,10 +28,6 @@ A set ‘MST’ is created to store the resulting tree. The list of edges is sor
 First, we create an empty set ‘MST’ and an additional list ‘X’ to store our edges. Starting with an arbitrary node, we add nodes into our ‘X’ list step by step, and then run the following procedures until the number of elements in ‘X’ equals a total number of nodes in our graph. At each iteration of a cycle, we create a list of edges we are choosing from on this particular step. Then, for each node, already added to our ‘X’ list, we look at the edges between it and the neighbor node, create a list of all edges between the initial one and neighbors, choose the one with lower weight, and add it to the MST. Then, add a new node (to which we have a path already) to the ‘X’ list, and repeat the iteration.
 ### Boruvka:
 A set ‘MST’ is created to store the resulting tree. A dictionary ‘minEdge’ is created to store the minimal edge for each of current connected components (key - root of a CC, value - minimal edge for it), integer n is made equal to the number of nodes. The array of edges is sorted. A while cycle is runned untill the number of edges in ‘MST’ is equal to n-1 (and therefore it is the wanted tree). On each iteration a cycle runs through the edges to find minimal edges for all current CCs (for any edge we check that its nodes belong to different CCs and if yes, we check if the edge is smaller then edges for those CCs in minEdge, if yes, we put the edge in minEdge. Then a cycle runs through all the nodes, for each of them we check if it is a root of a CC. If yes, we use its minimal edge from minEdge to connect it with another CC (if this edge wasn’t already used) and adds the edge to MST. Before the next iteration minEdge is cleared.
-
-### Function equal(set, set):
-compares two sets of edges. Needed because default sets comparison does not count edges (a, b, weight) and (b, a, weight) as equal, which they are, as 
-
 
 ## Drive part: 
 ### Finding MST (minimal spanning tree): 
