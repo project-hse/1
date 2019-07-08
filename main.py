@@ -153,6 +153,12 @@ for i in g.nodes:
 	g.parent[i] = i
 
 ansK = Kruskal(g)
+data = ansK
+with open('Output1.csv', 'w') as out:
+    csv_out = csv.writer(out)
+    csv_out.writerow(['City 1', 'City 2', 'Graph'])
+    for row in data:
+        csv_out.writerow(row)
 
 # check
 if equal(ansP, ansK) and (ansK >= ansB and ansK <= ansB) and equal(ansB, ansP):
