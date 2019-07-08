@@ -13,13 +13,13 @@ As we have already assumed we work on a plane, not a globe, we have decided to u
 # Code:
 **main.py**
 ### Node structure:
-a node is implemented as an object of class Node with attributes ‘name’ (string), ‘rank’ (integer), ‘long’ (longitude, float) and ‘lat’ (latitude, float).
+A node is implemented as an object of class Node with attributes ‘name’ (string), ‘rank’ (integer), ‘long’ (longitude, float) and ‘lat’ (latitude, float).
 ### Graph structure: 
-a graph is implemented as an object of class Graph with attributed ‘graph’ (array of edges), ‘nodes’ (array of nodes) and ‘parent’ (dictionary with nodes as keys and the root of the tree a node currently belongs to as value for any key). Methods are addNode(name, latitude, longitude), find(node) (finds the root of the tree the node belongs to), connect(u, v) (connect the connected components the nodes belong to)
+A graph is implemented as an object of class Graph with attributed ‘graph’ (array of edges), ‘nodes’ (array of nodes) and ‘parent’ (dictionary with nodes as keys and the root of the tree a node currently belongs to as value for any key). Methods are addNode(name, latitude, longitude), find(node) (finds the root of the tree the node belongs to), connect(u, v) (connect the connected components the nodes belong to)
 ### Function makeGraph(file.csv):
-makes an object of type Graph from the given .csv file of nodes
+Makes an object of type Graph from the given .csv file of nodes
 ### Function equal(set, set):
-compares two sets of edges. Needed because default sets comparison does not count edges (a, b, weight) and (b, a, weight) as equal, which they are, as the graph we work with is undirected. Through two cycles it checks that all the edges from set 1 are in set 2 and edges from set 2 are in set 1, so that they are equal.
+Compares two sets of edges. Needed because default sets comparison does not count edges (a, b, weight) and (b, a, weight) as equal, which they are, as the graph we work with is undirected. Through two cycles it checks that all the edges from set 1 are in set 2 and edges from set 2 are in set 1, so that they are equal.
 
 ## Algorithms:
 ### Kruskal:
@@ -37,9 +37,12 @@ We imported folium library to create a map. From the Kruskal algorithm, we had a
 
 
 **Geocoding.py**
-## Drive part: 
+## Drive part:
 In geocoding part we used 4 libraries: logging, time, pandas, requests and our Google API key. With God’s help, we have coped with the task. After mentioning all restrictions and extra functions(as Google Full Result). Using Google’s geocode url we got all information about cities in Australia. Also there are some helpful time managing features if we get API Query limit.
+
+
 **Distance_matrix.py**
+## Drive part:
 In distance matrix part we used prepared MST and tried to understand if real roads are shorter. So, using pandas, googlemaps and csv we got the final table (Final.csv) where you can see all cities, graph value and km between given cities.
 # Result: 
-the obtained MST is visualised on a map via Folium library. Also a comparison table is constructed in a form of a .csv file
+The obtained MST is visualised on a map via Folium library. Also a comparison table is constructed in a form of a .csv file
