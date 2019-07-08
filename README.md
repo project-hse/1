@@ -21,10 +21,11 @@ makes an object of type Graph from the given .csv file of nodes
 
 ## Algorithms:
 ### Kruskal:
-A set ‘MST’ is created to store the resulting tree. The list of edges is sorted by weight in the acsending order. A cycle runs through the list, for each edge checking if the edge is 
+A set ‘MST’ is created to store the resulting tree. The list of edges is sorted by weight in the acsending order. A cycle runs through the list, for each edge checking if the addition of this edge causes a cycle in MST. If not, we add the edge, else we discard it. 
 ### Prim: 
 First, we create an empty set ‘MST’ and an additional list ‘X’ to store our edges. Starting with an arbitrary node, we add nodes into our ‘X’ list step by step, and then run the following procedures until the number of elements in ‘X’ equals a total number of nodes in our graph. At each iteration of a cycle, we create a list of edges we are choosing from on this particular step. Then, for each node, already added to our ‘X’ list, we look at the edges between it and the neighbor node, create a list of all edges between the initial one and neighbors, choose the one with lower weight, and add it to the MST. Then, add a new node (to which we have a path already) to the ‘X’ list, and repeat the iteration.
 ### Boruvka:
+A set ‘MST’ is created to store the resulting tree. A dictionary ‘minEdge’ is created to store the minimal edge for each of current connected components (key - root of a CC, value - minimal edge for it), integer n is made equal to the number of nodes. The array of edges is sorted. A while cycle is runned untill the number of edges in ‘MST’ is equal to n-1 (and therefore it is the wanted tree). On each iteration a cycle runs through the edges to find minimal edges for all current CCs (for any edge we check that its nodes belong to different CCs and if yes, we check if the edge is smaller then edges for those CCs in minEdge, if yes, we put the edge in minEdge. Then a cycle runs through all the nodes, for each of them we check if it is a root of a CC. If yes, we use its minimal edge from minEdge to connect it with another CC (if this edge wasn’t already used) and adds the edge to MST. Before the next iteration minEdge is cleared.
 
 ### Function equal(set, set):
 compares two sets of edges. Needed because default sets comparison does not count edges (a, b, weight) and (b, a, weight) as equal, which they are, as 
