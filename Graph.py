@@ -63,7 +63,7 @@ def makeGraph(inputf):
 
 	for i in range(len(g.nodes) - 1): #from array of nodes calculate weights, add edges to graph g
 		for j in range(i + 1, len(g.nodes)):
-			weight = ((g.nodes[i].lat - g.nodes[j].lat)**2 + (g.nodes[i].long - g.nodes[j].long)**2)**0.5
+			weight = 100 * ((g.nodes[i].lat - g.nodes[j].lat)**2 + (g.nodes[i].long - g.nodes[j].long)**2)**0.5
 			g.graph.append([g.nodes[i], g.nodes[j], weight])
 	
 	return g
@@ -93,7 +93,7 @@ def Prim(g):
 		for x in X:               #if 'i' is not yet in X
 			for i in g.nodes:
 				if i not in X:
-					weight = ((i.lat - x.lat)**2 + (i.long - x.long)**2)**0.5
+					weight = 100 * ((i.lat - x.lat)**2 + (i.long - x.long)**2)**0.5
 					curr_edges.append([i, x, weight])
 		#Then find the edge with the smallest weight in a curr_edges, add it to MST
 		curr_edges = sorted(curr_edges, key = lambda item: item[2])
