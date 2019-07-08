@@ -109,7 +109,6 @@ Kingaroy
 Mackay
 Mareeba
 Maroochydore
-Maryborough
 Moonie
 Moranbah
 Mount Isa
@@ -156,13 +155,11 @@ Kingston
 Launceston
 New Norfolk
 Queenstown
-Richmond
 Rosebery
 Smithton
 Stanley
 Ulverstone
 Wynyard
-Albury-Wodonga
 Ararat
 Bacchus Marsh
 Bairnsdale
