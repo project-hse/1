@@ -173,6 +173,30 @@ ansK = Kruskal(g)
 if equal(ansP, ansK) and (ansK >= ansB and ansK <= ansB) and equal(ansB, ansP):
 	print('found MST')
 
+# Now we want to make a map with the MST
+import folium
+
+coord = [0, 0]
+coord.reverse
+
+my_map = folium.Map(location = coord)
+
+Cities = []
+fin = open("input_big.txt", encoding = "ISO-8859-1",)
+line = fin.readline()
+line = fin.readline()
+while line:
+    s = line.split('\t')
+    Cities.append([s[4], float(s[5]), float(s[6])])
+    line = fin.readline()
+fin.close()
+
+for i in range(len(Cities)):
+  folium.Marker([Cities[i][1], Cities[i][2]], popup=Cities[i][0], tooltip='Click').add_to(my_map)
+
+for k in range(len(Cities)-1):
+  points = [[Cities[k][1], Cities[k][2]], [Cities[k+1][1], Cities[k+1][2]]]
+  folium.PolyLine(points, color="purple", weight = 1, opacity = 0.5).add_to(my_map)
 # some output shit
 
 # test output
