@@ -38,7 +38,8 @@ We imported folium library to create a map. From the Kruskal algorithm, we had a
 
 **Geocoding.py**
 ## Drive part: 
-In geocoding part we used 4 libraries: logging, time, pandas, requests and our Google API key. With God’s help, we have coped with the task. After mentioning all restrictions and extra functions(as Google Full Result). Using Google’s geocode url we got all information about cities in Australia. Also there are some helpful time managing features if we get API Query limit. In distance matrix part we used prepared MST and tried to understand if real roads are shorter.
-
+In geocoding part we used 4 libraries: logging, time, pandas, requests and our Google API key. With God’s help, we have coped with the task. After mentioning all restrictions and extra functions(as Google Full Result). Using Google’s geocode url we got all information about cities in Australia. Also there are some helpful time managing features if we get API Query limit.
+**Distance_matrix.py**
+In distance matrix part we used prepared MST and tried to understand if real roads are shorter. So, using pandas, googlemaps and csv we got the final table (Final.csv) where you can see all cities, graph value and km between given cities.
 # Result: 
 the obtained MST is visualised on a map via Folium library. Also a comparison table is constructed in a form of a .csv file
