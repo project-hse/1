@@ -7,10 +7,6 @@ class Node:
 		self.lat = latitude
 		self.long = longitude
 
-	def __str__(self):
-		s = self.name + ' ' + str(self.long) + ' ' + str(self.lat)
-		return s
-
 
 class Graph:
 	# create array of edges, array of nodes
@@ -49,17 +45,8 @@ class Graph:
 def makeGraph(inputf):
 	g = Graph()
 
-	    for index, row in df.iterrows():
-        #print(row['input_string'], row['latitude'], row['longitude'])
-        g.addNode(row['input_string'], row['latitude'], row['longitude'])
-
-    #fin = open(inputf, 'r')
-    #line = fin.readline()
-    #while line:  # add nodes to graph g w their coords from file
-        #s = line.split()
-        #g.addNode(s[0], float(s[1]), float(s[2]))
-        #line = fin.readline()
-    #fin.close()
+	for index, row in df.iterrows():
+		g.addNode(row['input_string'], row['latitude'], row['longitude'])
 
 	for i in range(len(g.nodes) - 1): #from array of nodes calculate weights, add edges to graph g
 		for j in range(i + 1, len(g.nodes)):
@@ -77,7 +64,7 @@ def Kruskal(g):
 		
 		if g.find(u) != g.find(v): #test for cycles
 			g.connect(u, v)
-			MST.add((u.name, v.name, weight))
+			MST.add((u, v, weight))
 		#else not included
 
 	return MST
@@ -99,7 +86,7 @@ def Prim(g):
 		curr_edges = sorted(curr_edges, key = lambda item: item[2])
 		edge = curr_edges[0]
 
-		MST.add((edge[1].name, edge[0].name, edge[2]))
+		MST.add((edge[0], edge[1], edge[2]))
 		X.append(edge[0]) #Add new node to X, repeat
 	return MST
 
@@ -136,7 +123,7 @@ def Boruvka(g):
 
 				if CC1 != CC2: #we could have connected them already if the edge was min for both
 					g.connect(CC1, CC2) #unite CCs current edge connects
-					MST.add((u.name, v.name, weight))
+					MST.add((u, v, weight))
 
 		#clear dicitonary of minimal edges before next iteration
 		minEdge.clear()
@@ -169,22 +156,6 @@ for i in g.nodes:
 
 ansK = Kruskal(g)
 
-# chek
+# check
 if equal(ansP, ansK) and (ansK >= ansB and ansK <= ansB) and equal(ansB, ansP):
 	print('found MST')
-
-# some output shit
-
-# test output
-# print("Kruskal")
-# for i in ansK:
-# 	print(i)
-# print("Boruvka")
-# for i in ansB:
-# 	print(i)
-# print("Prim")
-# for i in ansP:
-# 	print(i)
-# print("ans")
-# for i in ans:
-# 	print(i)
