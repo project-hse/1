@@ -1,4 +1,5 @@
 import pandas as pd
+import csv
 class Node:
 	# each node initially has itslef as parent and rank 0
 	def __init__(self, name, latitude, longitude):
