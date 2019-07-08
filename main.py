@@ -59,8 +59,8 @@ def Kruskal(g):
 	MST = set()
 	g.graph = sorted(g.graph, key=lambda item: item[2])
 
-	for i in range(len(g.graph)): #for all edges
-		u, v, weight = g.graph[i]
+	for i in g.graph: #for all edges
+		u, v, weight = i
 		
 		if g.find(u) != g.find(v): #test for cycles
 			g.connect(u, v)
@@ -99,8 +99,8 @@ def Boruvka(g):
 
 	while len(MST) < n - 1: #while we don't have n-1 edges in MST = while we don't have 1 resulting tree that is MST
 		# find minimal edges for all current CCs
-		for i in range (len(g.graph)):
-			u, v, weight = g.graph[i]
+		for i in g.graph:
+			u, v, weight = i
 			CC1 = g.find(u) #root of CC of u
 			CC2 = g.find(v) #root of CC of v
 
@@ -113,9 +113,7 @@ def Boruvka(g):
 		#now we have minimal edges for all current CC
 
 		#add found edges to MST
-		for i in range (len(g.nodes)):
-			node = g.nodes[i]
-
+		for node in g.nodes:
 			if node in minEdge: #a node can be not in minEdge if it isn't a root of some CC
 				u, v, weight = minEdge[node]
 				CC1 = g.find(u) #root of CC of u
