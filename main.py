@@ -157,3 +157,18 @@ ansK = Kruskal(g)
 # check
 if equal(ansP, ansK) and (ansK >= ansB and ansK <= ansB) and equal(ansB, ansP):
 	print('found MST')
+	
+import folium
+
+coord = [-35, 149]
+coord.reverse
+
+my_map = folium.Map(location = coord)
+
+for i in ansK:
+  folium.Marker([i[0].lat, i[0].long], popup=i[0].name, tooltip='Click').add_to(my_map)
+  folium.Marker([i[1].lat, i[1].long], popup=i[1].name, tooltip='Click').add_to(my_map)
+
+for k in ansK:
+  points = [[k[0].lat, k[0].long], [k[1].lat, k[1].long]]
+  folium.PolyLine(points, color="purple", weight = 1, opacity = 1).add_to(my_map)
