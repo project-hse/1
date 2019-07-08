@@ -8,6 +8,7 @@ Python 3.7, Folium, Google API
 List of cities was obtained from Britannica
 For the list via Google API a .csv file of coordinates was made
 For futher work with Folium the .csv file was converted into .txt, which then was used in inputfix.txt to obtain an array of cities. The cities are represented as arrays [name, latitude, longitude].
+As we have already assumed we work on a plane, not a globe, we have decided to use a scale of 1 deg = 100 km (since for any part of the globe 1 deg of latitude is equal to 111 km and for longitude the scale changes depending on the latitude, so we picked the scale on 26 deg south latitude, which is the central latitude of Australia, and where the value is around 100 km per degree)
 
 # Code:
 **main.py**
