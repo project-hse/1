@@ -158,7 +158,7 @@ ansK = Kruskal(g)
 data = set()
 for i in ansK:
     data.add((i[0].name, i[1].name, i[2]))
-with open('/Users/fmtsvetkov/Desktop/Output1.csv', 'w') as out:
+with open('Output1.csv', 'w') as out:
     csv_out = csv.writer(out)
     csv_out.writerow(['City 1', 'City 2', 'Graph'])
     for row in data:
