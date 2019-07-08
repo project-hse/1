@@ -31,6 +31,6 @@ for i, j in zip(list0, list1):
     result1 = (result[0]['legs'][0]['distance']['text'])
     list3.append(result1)
 print(list3)
-data = dict(col1=list0, col2=list1, col3=list2, col4=list3)
+data = dict(City1=list0, City2=list1, Graph=list2, Google=list3)
 df = pd.DataFrame(data)
 df.to_csv(r'Final.csv', sep=',', index=False)
