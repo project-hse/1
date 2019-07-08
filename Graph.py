@@ -140,10 +140,30 @@ def Boruvka(g):
 
 
 g = makeGraph("input.txt")
-# ans = Boruvka(g)
+
+ansP = Prim(g)
+ansB = Boruvka(g)
+
+for i in g.nodes:
+	g.parent[i] = i
+
+ansK = Kruskal(g)
+
+# chek
+# ans = ansP.difference(ansK)
 
 # some output shit
 
 # test output
+# print("Kruskal")
+# for i in ansK:
+# 	print(i)
+# print("Boruvka")
+# for i in ansB:
+# 	print(i)
+# print("Prim")
+# for i in ansP:
+# 	print(i)
+# print("ans")
 # for i in ans:
 # 	print(i)
