@@ -30,7 +30,7 @@ for i, j in zip(list0, list1):
     result = gmaps.directions(i, j, mode = "driving", avoid = None, departure_time = None)
     result1 = (result[0]['legs'][0]['distance']['text'])
     list3.append(result1)
-print(list3)
+
 data = dict(City1=list0, City2=list1, Graph=list2, Google=list3)
 df = pd.DataFrame(data)
 df.to_csv(r'Final.csv', sep=',', index=False)
